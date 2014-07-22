@@ -72,7 +72,7 @@ function ChangePieChart() {
     if (category === "Film and Video") {
         category = "Film & Video"
     }
-    object.data = category + ".svg";
+    object.data = "PieCharts/" + category + ".svg";
 }
 
 
