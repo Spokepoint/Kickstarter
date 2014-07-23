@@ -13,13 +13,13 @@ from pygal.style import Style
 custom_style = Style(
   background='transparent',
   plot_background='transparent',
-  foreground='#53A0E8',
-  foreground_light='#53A0E8',
-  foreground_dark='#53A0E8',
-  opacity='.6',
-  opacity_hover='.9',
+  foreground='#111111',
+  foreground_light='#000000',
+  foreground_dark='#111111',
+  opacity='.9',
+  opacity_hover='.6',
   transition='400ms ease-in',
-  colors=('#DC143C', '#00FF00', '#E95355', '#E87653', '#E89B53'))
+  colors=('#444444', '#2ba2ac', '#E95355', '#E87653', '#E89B53'))
 
 column_list = ["id","url",'name','backers','parentCat','category','duration', 'date_end','goal','raised','lat','lon','about','faqs','comments','finished','date_scanned', 'success']
 cols_to_graph = ['url', 'success', 'duration', 'goal']
@@ -43,10 +43,8 @@ def cartesian(arrays, out=None):
 
 
 def show_graph(fail, success, category):
-  xy_chart = pygal.XY(stroke=False, style=custom_style)
-  xy_chart.title = category
-  xy_chart.Xtitle = "Days of Campaign"
-  xy_chart.Ytitle = "Goal of Campaign"
+  xy_chart = pygal.XY(stroke=False, show_legend=False, spacing=0, width=1500, style=custom_style, title_font_size=20, major_label_font_size=16, label_font_size=14, x_title='Duration', y_title='Goal of Campaign')
+  #xy_chart.title = category
   xy_chart.add('fail', fail)
   xy_chart.add('success', success)
   xy_chart.render_to_file(str(category + ".svg")) 
@@ -80,18 +78,21 @@ def logit_fit(sql, category, intercept):
   df = psql.read_sql(sql, con)
   #dataframe columns
   data = df[cols_to_graph]
-  #data = data[data['duration'] < 61]
-  #data = data[data['goal'] < 100000]
-  #seperate_data(data, category)
+  data = data[data['duration'] < 61]
+  #data = data[data['goal'] < stats.scoreatpercentile(data['goal'], 99)]
+  seperate_data(data, category)
   data = data[cols_to_keep]
   #print category
-  #print stats.scoreatpercentile(data['goal'], 98)
+  #print stats.scoreatpercentile(data['goal'], 99)
   data['intercept'] = intercept
   train_cols = data.columns[1:]
   logit = sm.Logit(data['success'], data[train_cols])
   #fit the model
   result = logit.fit()
+  print category
+  print result.summary()
   r = result.params
+  print r
   return data
   #print r
   #goal = np.linspace(data['goal'].min(), data['goal'].max(), 10)
@@ -104,22 +105,6 @@ def logit_fit(sql, category, intercept):
 
 
 category = logit_fit(sql, 'category', .44)
-import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
-# example data
-category = category[category['goal'] < 100000]
-mu = 8800 # mean of distribution
-sigma = 6000 # standard deviation of distribution
-x = mu + sigma * category['goal']
-
-num_bins = 10
-# the histogram of the data
-n, bins, patches = plt.hist(x, num_bins)
-plt.setp(patches, 'facecolor', 'g')
-# add a 'best fit' line
-y = mlab.normpdf(bins, mu, sigma)
-plt.plot(bins, y, 'r--')
-plt.show()
 
 ############
 #Art
@@ -127,6 +112,13 @@ sql = """
         SELECT * FROM test.crawler_project WHERE parentCat = 'Art';
       """
 art = logit_fit(sql, 'Art', .44)
+
+def bar_chart():
+  bar_chart = pygal.Bar()
+  bar_chart.x_labels = map(str, range(0, 5))
+  print np.histogram(art['goal'], range(0, 10000, 1000))
+  bar_chart.add("rate", np.histogram(category['goal'], range(0, 100000, 50))[0])
+  bar_chart.render_to_file("test.svg")
 
 ############
 #Comics
@@ -226,7 +218,7 @@ sql = """
 theater = logit_fit(sql, 'Theater', .44)
 
 if __name__ == '__main__':
-  cont = True
+  cont = False
   while(cont):
     #goal = int(raw_input("Please enter amount: "))
     #duration = int(raw_input("Please enter time: "))
