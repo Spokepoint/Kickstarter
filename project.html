@@ -14,7 +14,7 @@
   <div id="js-navigation"><nav class="app-header">
     <div class="container">
       <h3 class="logo">
-        <a href="/">Glassy<br>Media</a>
+        <a href="/">Spokepoint</a>
       </h3>
 
       <ul class="app-nav pull-right">
@@ -94,57 +94,65 @@
         </div>
         <div class="col-sm-8"><object type="image/svg+xml" data="Charts/Duration.svg" width="100%"></object></div>
       </div>
-      <div class="row col-sm-12 col-sm-push-1">
-        <h3>So, What are my Chances?</h3>
-      </div>
-      <div class="col-sm-3 col-sm-push-1">
-        <form class="form-horizontal">
-          <fieldset>          
-            <div class="row form-group-sm col-sm-11">
-              <select class="form-control" id="category" name="categories">
-                <option value="Category">All Categories</option>
-                <option value="Art">Art</option>
-                <option value="Comics">Comics</option>
-                <option value="Crafts">Crafts</option>
-                <option value="Dance">Dance</option>
-                <option value="Design">Design</option>
-                <option value="Fashion">Fashion</option>
-                <option value="Film and Video">Film and Video</option>
-                <option value="Food">Food</option>
-                <option value="Games">Games</option>
-                <option value="Journalism">Journalism</option>
-                <option value="Music">Music</option>
-                <option value="Photography">Photography</option>
-                <option value="Publishing">Publishing</option>
-                <option value="Technology">Technology</option>
-                <option value="Theater">Theater</option>
-              </select>
-            </div>
-          </fieldset>
-        </form>
-        <div class=""><input id="days" class="rounded" placeholder="Duration">
-        </div><br>
-        <div class=""><input class="rounded" id="amount" min="1" max="100000" placeholder="Goal">
-        </div><br>
-        <div class=" pull-right">
-          <button class="btn btn-info" onclick="calculate_percentage();">find out!</button>
-        </div>
-        <br>
-      </div>
-      <br>
-      <div class="col-sm-9 pull-right">
-        <div class="col-sm-12">
-          <p><small>Using logistic regression we analyzed the probability of a successful campaign based on duration and goal<br>head over to blog.spokepoint.com for more tips</small></p>
-          <div class="row col-sm-12 text-center">
-            <canvas id="canvas" width="300" height="10"></canvas>
-            <div id="textDiv" class=""></div>
+      <div class="col-sm-10 col-sm-push-1">
+
+        <h3 class="">So, What Are my Chances?</h3>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="text-left">Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal<br>head over to blog.spokepoint.com for more tips</h5>
           </div>
-          <!--<object type="image/svg+xml" data="Graphs/Art.svg"></object>-->
+          <div class="panel-body">
+            <div class="col-sm-3">
+              <form class="form-horizontal">
+                <fieldset>          
+                  <div class="row">
+                    <select class="form-control" id="category" name="categories">
+                      <option value="Category">All Categories</option>
+                      <option value="Art">Art</option>
+                      <option value="Comics">Comics</option>
+                      <option value="Crafts">Crafts</option>
+                      <option value="Dance">Dance</option>
+                      <option value="Design">Design</option>
+                      <option value="Fashion">Fashion</option>
+                      <option value="Film and Video">Film and Video</option>
+                      <option value="Food">Food</option>
+                      <option value="Games">Games</option>
+                      <option value="Journalism">Journalism</option>
+                      <option value="Music">Music</option>
+                      <option value="Photography">Photography</option>
+                      <option value="Publishing">Publishing</option>
+                      <option value="Technology">Technology</option>
+                      <option value="Theater">Theater</option>
+                    </select>
+                  </div>
+                </fieldset>
+              </form>
+              <div class="row"><input class="rounded col-sm-12" id="days" class="rounded" placeholder="Duration">
+              </div>
+              <div class="row"><br><input class="rounded col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
+              </div>
+              <div class="row pull-right"><br>
+                <button class="btn btn-info" onclick="show_results();">find out!</button>
+              </div>
+              <br>
+            </div>
+            <div class="col-sm-9 pull-right">
+              <div class="text-center">
+                <canvas id="canvas" width="auto" height="10"></canvas>
+                <div id="textDiv" class=""></div>
+              </div><br>
+              <div id="chance-panel" style="display:none;">
+                <div class="panel panel-default">
+                  <h4 class="text-left">Suggestions</h4>
+                  <div id="suggestions"></div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 <footer class="footer">
   <div class="container">

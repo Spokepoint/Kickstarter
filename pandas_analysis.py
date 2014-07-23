@@ -3,9 +3,11 @@ import pandas as pd
 import statsmodels.api as sm
 import pylab as pl
 import numpy as np
+import scipy.stats as stats
 import pandas.io.sql as psql
 import MySQLdb
 
+import matplotlib.pyplot as plt
 import pygal
 from pygal.style import Style
 custom_style = Style(
@@ -18,6 +20,10 @@ custom_style = Style(
   opacity_hover='.9',
   transition='400ms ease-in',
   colors=('#DC143C', '#00FF00', '#E95355', '#E87653', '#E89B53'))
+
+column_list = ["id","url",'name','backers','parentCat','category','duration', 'date_end','goal','raised','lat','lon','about','faqs','comments','finished','date_scanned', 'success']
+cols_to_graph = ['url', 'success', 'duration', 'goal']
+cols_to_keep = ['success', 'duration', 'goal']
 
 def cartesian(arrays, out=None): 
     arrays = [np.asarray(x) for x in arrays]
@@ -45,6 +51,7 @@ def show_graph(fail, success, category):
   xy_chart.add('success', success)
   xy_chart.render_to_file(str(category + ".svg")) 
 
+
 def seperate_data(df, category):
   fail = []
   success = []
@@ -66,27 +73,27 @@ con = MySQLdb.connect(host= 'localhost',
 sql = """
 SELECT * FROM test.crawler_project;
 """
+
   
 def logit_fit(sql, category, intercept):
   #create dataframe
-  column_list = ["id","url",'name','backers','parentCat','category','duration', 'date_end','goal','raised','lat','lon','about','faqs','comments','finished','date_scanned', 'success']
-  cols_to_graph = ['url', 'success', 'duration', 'goal']
-  cols_to_keep = ['success', 'duration', 'goal']
   df = psql.read_sql(sql, con)
   #dataframe columns
   data = df[cols_to_graph]
-  data = data[data['duration'] < 61]
-  data = data[data['goal'] < 100000]
-  seperate_data(data, category)
+  #data = data[data['duration'] < 61]
+  #data = data[data['goal'] < 100000]
+  #seperate_data(data, category)
   data = data[cols_to_keep]
+  #print category
+  #print stats.scoreatpercentile(data['goal'], 98)
   data['intercept'] = intercept
   train_cols = data.columns[1:]
   logit = sm.Logit(data['success'], data[train_cols])
   #fit the model
   result = logit.fit()
-  print category + ' result params'
   r = result.params
-  print r
+  return data
+  #print r
   #goal = np.linspace(data['goal'].min(), data['goal'].max(), 10)
   #dur = np.linspace(data['duration'].min(), data['duration'].max(), 10)
   #combos = pd.DataFrame(cartesian([goal, dur]))
@@ -95,6 +102,24 @@ def logit_fit(sql, category, intercept):
   #seperate_data(data, category)
   #return logit
 
+
+category = logit_fit(sql, 'category', .44)
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+# example data
+category = category[category['goal'] < 100000]
+mu = 8800 # mean of distribution
+sigma = 6000 # standard deviation of distribution
+x = mu + sigma * category['goal']
+
+num_bins = 10
+# the histogram of the data
+n, bins, patches = plt.hist(x, num_bins)
+plt.setp(patches, 'facecolor', 'g')
+# add a 'best fit' line
+y = mlab.normpdf(bins, mu, sigma)
+plt.plot(bins, y, 'r--')
+plt.show()
 
 ############
 #Art
