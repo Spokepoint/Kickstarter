@@ -4764,7 +4764,7 @@ a.list-group-item-danger.active:focus {
   margin-bottom: 20px;
   background-color: #ffffff;
   border: 1px solid transparent;
-  border-radius: 2px;
+  border-radius: 8px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
@@ -4776,6 +4776,7 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid transparent;
   border-top-right-radius: 1px;
   border-top-left-radius: 1px;
+  border-radius: 6px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;

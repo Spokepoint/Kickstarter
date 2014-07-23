@@ -44,31 +44,6 @@ function success_percent(days, amount, category) {
     return 1 / (1 + Math.exp(-x))
 }
 
-function show_results() {
-    var canvas = document.getElementById("canvas");
-    var days = document.getElementById("days").value;
-    var amount = document.getElementById("amount").value;
-    var category = document.getElementById("category").value;
-    var div = document.getElementById("textDiv");
-    if (canvas.getContext) {
-        var ctx = canvas.getContext("2d");
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        div.textContent = "input a number of days (1-60) and an amount ($1-100,000)";
-        ctx.fillStyle = "#0fbdcc";
-        probability = success_percent(days, amount, category);
-        percent = probability * 100
-        //success_percent(projects, days, amount);
-        if (percent == 0) {
-            div.textContent = "Not enough historical data to compute accurate percentage"
-        }
-        if (days != 0 && amount != 0 && percent != 0) {
-            document.getElementById('chance-panel').style.display = "block";
-            ctx.fillRect(0, 0, canvas.width * probability, 10);
-            div.textContent = "you have a " + percent.toFixed(2) + "% chance of success.";
-        }
-    }
-}
-
 function ChangePieChart() {
     var object = document.getElementById("pie-chart");
     var category = document.getElementById("chart_category").value;
@@ -77,6 +52,40 @@ function ChangePieChart() {
     }
     object.data = "Charts/" + category + ".svg";
 }
+
+function form_suggestions(category, duration, goal) {
+    if (goal > 1000) {
+        document.getElementById("suggestions").textContent = "When choosing a goal, keep in mind all the fees beyond getting your dream off the ground. Kickstarter will take 5% of your earnings, Amazon will take 3% and you'll also need to account for backer rewards.";
+    }
+    if (duration < 10) {
+        document.getElementById("suggestions").textContent = "Having a shorter campaign length shows more confidence and can lead to greater chance of success but don't be overconfident!";
+    }
+}
+
+
+
+function show_results() {
+    var canvas = document.getElementById("canvas");
+    var duration = document.getElementById("days").value;
+    var goal = document.getElementById("amount").value;
+    var category = document.getElementById("category").value;
+    var div = document.getElementById("textDiv");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        div.textContent = "input a number of days (1-60) and an amount ($1-100,000)";
+        ctx.fillStyle = "#0fbdcc";
+        probability = success_percent(duration, goal, category);
+        percent = probability * 100
+        if (duration != 0 && goal != 0 && percent != 0) {
+            form_suggestions(category, duration, goal);
+            document.getElementById('chance-panel').style.display = "block";
+            ctx.fillRect(0, 0, canvas.width * probability, 10);
+            div.textContent = "you have a " + percent.toFixed(2) + "% chance of success.";
+        }
+    }
+}
+
 
 
 //
