@@ -10,7 +10,9 @@ function dotproduct(a, b) {
 function success_percent(days, amount, category) {
     var x = 0.0
     var i = 0.44
-    if (category === 'Art') {
+    if (category === 'category') {
+        x = dotproduct([days, amount, i], [-0.016001, -0.000044, 1.643558]);
+    } else if (category === 'Art') {
         x = dotproduct([days, amount, i], [-0.017053, -0.000084, 2.184309]);
     } else if (category === 'Comics') {
         x = dotproduct([days, amount, i], [-0.020134, -0.000062, 2.285823]);
@@ -42,7 +44,7 @@ function success_percent(days, amount, category) {
     return 1 / (1 + Math.exp(-x))
 }
 
-function calculate_percentage() {
+function show_results() {
     var canvas = document.getElementById("canvas");
     var days = document.getElementById("days").value;
     var amount = document.getElementById("amount").value;
@@ -60,7 +62,8 @@ function calculate_percentage() {
             div.textContent = "Not enough historical data to compute accurate percentage"
         }
         if (days != 0 && amount != 0 && percent != 0) {
-            ctx.fillRect(0, 0, 3 * percent, 10);
+            document.getElementById('chance-panel').style.display = "block";
+            ctx.fillRect(0, 0, canvas.width * probability, 10);
             div.textContent = "you have a " + percent.toFixed(2) + "% chance of success.";
         }
     }

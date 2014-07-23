@@ -14,7 +14,7 @@
   <div id="js-navigation"><nav class="app-header">
     <div class="container">
       <h3 class="logo">
-        <a href="/">Glassy<br>Media</a>
+        <a href="/">Spokepoint</a>
       </h3>
 
       <ul class="app-nav pull-right">
@@ -99,7 +99,7 @@
         <h3 class="">So, What Are my Chances?</h3>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <p><small>Using logistic regression we analyzed the probability of a successful campaign based on duration and goal<br>head over to blog.spokepoint.com for more tips</small></p>
+            <h5 class="text-left">Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal<br>head over to blog.spokepoint.com for more tips</h5>
           </div>
           <div class="panel-body">
             <div class="col-sm-3">
@@ -132,18 +132,20 @@
               <div class="row"><br><input class="rounded col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
               </div>
               <div class="row pull-right"><br>
-                <button class="btn btn-info" onclick="calculate_percentage();">find out!</button>
+                <button class="btn btn-info" onclick="show_results();">find out!</button>
               </div>
               <br>
             </div>
-            <br>
             <div class="col-sm-9 pull-right">
-              <div class="col-sm-12">
-                <div class="row col-sm-12 text-center">
-                  <canvas id="canvas" width="300" height="10"></canvas>
-                  <div id="textDiv" class=""></div>
+              <div class="text-center">
+                <canvas id="canvas" width="auto" height="10"></canvas>
+                <div id="textDiv" class=""></div>
+              </div><br>
+              <div id="chance-panel" style="display:none;">
+                <div class="panel panel-default">
+                  <h4 class="text-left">Suggestions</h4>
+                  <div id="suggestions"></div>
                 </div>
-                <!--<object type="image/svg+xml" data="Graphs/Art.svg"></object>-->
               </div>
             </div>
           </div>
