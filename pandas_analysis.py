@@ -53,12 +53,16 @@ def show_graph(fail, success, category):
 def seperate_data(df, category):
   fail = []
   success = []
+  max_success = 0
   for count, row in df.iterrows():
     if row['success'] == 0:
       fail.append({'value': (row['duration'], row['goal']), 'xlink': row['url']})
     else:
       success.append({'value': (row['duration'], row['goal']), 'xlink': row['url']})
+      if row['duration'] < 11 and row['goal'] > max_success:
+        max_success = row['goal']
   show_graph(fail, success, category)
+  print category + ": " + str(max_success)
 
 # read the data in
 #df = pd.read_csv("output2.csv")
@@ -79,7 +83,7 @@ def logit_fit(sql, category, intercept):
   #dataframe columns
   data = df[cols_to_graph]
   data = data[data['duration'] < 61]
-  #data = data[data['goal'] < stats.scoreatpercentile(data['goal'], 99)]
+  data = data[data['goal'] < stats.scoreatpercentile(data['goal'], 99)]
   seperate_data(data, category)
   data = data[cols_to_keep]
   #print category

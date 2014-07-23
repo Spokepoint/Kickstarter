@@ -31,15 +31,15 @@ function success_percent(days, amount, category) {
     } else if (category == 'Journalism') {
         x = dotproduct([days, amount, i], [-0.003547, -0.000021, -0.220490]);
     } else if (category == 'Music') {
-        x = dotproduct([days, amount, i], [-0.016127, -0.000055, 2.494321]);
+        x = dotproduct([days, amount, i], [-0.016003, -0.000058, 2.517292]);
     } else if (category == 'Photography') {
-        x = dotproduct([days, amount, i], [-0.008885, -0.000063, 0.422430]);
+        x = dotproduct([days, amount, i], [-0.008850, -0.000067, 0.456913]);
     } else if (category == 'Publishing') {
-        x = dotproduct([days, amount, i], [-0.016996, -0.000064, 0.541934]);
+        x = dotproduct([days, amount, i], [-0.016993, -0.000070, 0.602225]);
     } else if (category == 'Technology') {
-        x = dotproduct([days, amount, i], [-0.014156, -0.000022, 0.726520]);
+        x = dotproduct([days, amount, i], [-0.015348, -0.000009, 0.426567]);
     } else {
-        x = dotproduct([days, amount, i], [-0.018138, -0.000062, 3.623317]);
+        x = dotproduct([days, amount, i], [-0.018138, -0.000062, 3.623234]);
     }
     return 1 / (1 + Math.exp(-x))
 }
@@ -53,12 +53,35 @@ function ChangePieChart() {
     object.data = "Charts/" + category + ".svg";
 }
 
-function form_suggestions(category, duration, goal) {
-    if (goal > 1000) {
-        document.getElementById("suggestions").textContent = "When choosing a goal, keep in mind all the fees beyond getting your dream off the ground. Kickstarter will take 5% of your earnings, Amazon will take 3% and you'll also need to account for backer rewards.";
+function suggest(category, duration, goal, avg_goal, avg_length) {
+    if (goal > avg_goal) {
+        return "The average goal for " + category + " is " + avg_goal + "! keep that in mind."
     }
-    if (duration < 10) {
-        document.getElementById("suggestions").textContent = "Having a shorter campaign length shows more confidence and can lead to greater chance of success but don't be overconfident!";
+    return "Good luck!"
+}
+
+
+function form_suggestions(category, duration, goal) {
+    var s = document.getElementById("suggestions")
+    switch (category) {
+        case 'Art':
+            s.textContent = suggest(category, duration, goal, 10000, 30);
+            break;
+        case 'Comics':
+            s.textContent = suggest(category, duration, goal, 1000, 30);;
+            break;
+        case 'Dance':
+            s.textContent = suggest(category, duration, goal, 1000, 30);;
+            break;
+        case 'Design':
+            s.textContent = suggest(category, duration, goal, 10, 30);
+            break;
+        case 'Fashion':
+            s.textContent = suggest(category, duration, goal, 10000, 30);;
+            break;
+        case 'Film and Video':
+            s.textContent = suggest(category, duration, goal, 100, 30);;
+            break;
     }
 }
 

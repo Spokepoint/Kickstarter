@@ -1,0 +1,1 @@
+The database I used for this analysis is from <a>https://github.com/neight-allen/django-kickstarter-scraper/</a>
