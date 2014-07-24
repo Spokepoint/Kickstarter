@@ -4,6 +4,7 @@ import statsmodels.api as sm
 import pylab as pl
 import numpy as np
 import pandas.io.sql as psql
+import scipy.stats as stats
 import MySQLdb
 
 import pygal
@@ -49,7 +50,7 @@ def get_average_goal(df, category):
   average_goals.append(goal/i)
   success_goals.append(suc_goal/s)
   fail_goals.append(f_goal/f)
-  create_pie_chart((s/i), category)
+  #create_pie_chart((s/i), category)
 
 def length_success_rate(df):
   last_dur = 0
@@ -77,7 +78,7 @@ def show_graph():
   bar_chart.add('failure', np.around(fail_goals,  decimals=2))
   bar_chart.render_to_file("Goals.svg")
 
-  bar_chart = pygal.Bar(show_legend=False, spacing=0, height=750, width=1300, style=custom_style,title_font_size=24, label_font_size=14, x_title='Category', y_title='Goal of Campaign', range=(0, 22000))
+  bar_chart = pygal.Bar(show_legend=False, spacing=0, height=750, width=1300, style=custom_style,title_font_size=24, label_font_size=14, x_title='Category', y_title='Goal of Campaign', range=(0, 30000))
   bar_chart.title = 'Average Goal for Category'
   bar_chart.x_labels = ('All', 'Art', 'Comics', 'Dance', 'Design', 'Fashion', 'Video', 'Food', 'Games', 'Journalism', 'Music', 'Photography', 'Publishing', 'Technology', 'Theater')
   bar_chart.add('success', np.around(average_goals,  decimals=2))
@@ -106,7 +107,7 @@ def logit_fit(sql, category):
   #dataframe columns
   data = df[cols_to_keep]
   data = data[data['duration'] < 61]
-  data = data[data['goal'] < 100000]
+  data = data[data['goal'] < stats.scoreatpercentile(data['goal'], 99)]
   get_average_goal(data, category)
   #train_cols = data.columns[1:]
   #logit = sm.Logit(data['success'], data[train_cols])
