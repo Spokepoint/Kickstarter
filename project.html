@@ -25,19 +25,18 @@
       </div>
     </div>
   </div>
-  <section class="jumbotron main-section" style="padding-top:40px; padding-bottom:40px">
+  <section class="main-section__stripe main-section" style="padding-top:40px; padding-bottom:40px">
     <div class="container row text-center">
-      <div class="">
-      <h1>What Makes a Successful Kickstarter?</h1>
-      <h4 class="label label-block label--square label--primary-light"><small>this analysis is based on historical data of 87,000 scraped kickstarter projects between 2009-2013.<br>The original database can be found <a href="">here</a></h4></small><br>
-      <a class="btn btn-info btn-lg" role="button" href="#chances">Find out your chances</a><br><br>
+      <div class="col-sm-12">
+        <h1>What Makes a Successful Kickstarter?</h1>
+        <h4 class="label label-block label--square label--primary-light"><small>this analysis is based on historical data of 87,000 scraped kickstarter projects between 2009-2013.<br>The original database can be found <a href="">here</a></h4></small><br>
+        <a class="btn btn-primary" role="button" href="#chances">Find out your chances</a><br><br>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+  <section class="main-section main-section--stripe">
+    <div class="testimonials npb container">
 
-<div class= "wrap main">
-  <div class="col-sm-10 col-sm-push-1">
-    <div class="row">
       <h2>Knowing your Category</h2>
       <div class="col-sm-7">
         <p>Your product's category matters- some categories are more likely to succeed on kickstarter than others. Each category also has different</p>
@@ -48,7 +47,7 @@
       </div>
       <div class="col-sm-5 text-center">
 
-        <object id="pie-chart" type="image/svg+xml" data="Charts/Category.svg" width="110%"></object>
+        <object id="pie-chart" type="image/svg+xml" data="Charts/Art.svg" width="100%"></object>
         <div class="row">
           <div class="col-sm-3 col-sm-push-3">Category</div>
           <form action="">
@@ -73,6 +72,10 @@
         </div>
       </div>
     </div><br>
+  </div>
+</section>
+<section class="main-section">
+  <div class="testimonials npb container">
     <div class="row">
       <div class="col-sm-4 pull-right">
         <h3>Finding the Right Goal</h3>
@@ -81,8 +84,11 @@
       </div>
       <div class="col-sm-8"><br><object type="image/svg+xml" data="TotalGoals.svg" width="100%"></object></div>
     </div><br>
-    <div class="row">
-
+  </div>
+</section>
+<div class="row">
+  <section class="main-section main-section--stripe">
+    <div class="testimonials npb container">
       <h3>Finding the Right Length</h3>
       <div class="col-sm-4">
         <p>Longer campaigns show less confidence and allow a longer period of time for the dreaded, dead zone of kickstarters.</p>
@@ -90,60 +96,61 @@
       </div>
       <div class="col-sm-8"><object type="image/svg+xml" data="Duration.svg" width="100%"></object></div>
     </div><br>
-    <div class="col-sm-10 col-sm-push-1 text-center" id="chances">
-      <h3 class="">So, What Are my Chances?</h3>
-      <h5>See how your potentialcampaign stacks up against past kickstarter projects.</h5>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h5 class="text-left">Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal. You can see what your chances of success would be based on the historical models we found. The above information can help you find realistic goals to input</h5>
+  </div>
+</section>
+<section class="container">
+<div class="col-sm-10 col-sm-push-1 text-center" id="chances">
+  <h3 class="">So, What Are my Chances?</h3>
+  <h5>See how your potentialcampaign stacks up against past kickstarter projects.</h5>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h5 class="text-left">Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal. You can see what your chances of success would be based on the historical models we found. The above information can help you find realistic goals to input</h5>
+    </div>
+    <div class="panel-body">
+      <div class="col-sm-3">
+        <form class="form-horizontal">
+          <fieldset>          
+            <div class="row">
+              <select class="form-control" id="category" name="categories">
+                <option value="Category">All Categories</option>
+                <option value="Art">Art</option>
+                <option value="Comics">Comics</option>
+                <option value="Crafts">Crafts</option>
+                <option value="Dance">Dance</option>
+                <option value="Design">Design</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Film and Video">Film and Video</option>
+                <option value="Food">Food</option>
+                <option value="Games">Games</option>
+                <option value="Journalism">Journalism</option>
+                <option value="Music">Music</option>
+                <option value="Photography">Photography</option>
+                <option value="Publishing">Publishing</option>
+                <option value="Technology">Technology</option>
+                <option value="Theater">Theater</option>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+        <div class="row"><input class="rounded col-sm-12" id="days" class="rounded" placeholder="Duration">
         </div>
-        <div class="panel-body">
-          <div class="col-sm-3">
-            <form class="form-horizontal">
-              <fieldset>          
-                <div class="row">
-                  <select class="form-control" id="category" name="categories">
-                    <option value="Category">All Categories</option>
-                    <option value="Art">Art</option>
-                    <option value="Comics">Comics</option>
-                    <option value="Crafts">Crafts</option>
-                    <option value="Dance">Dance</option>
-                    <option value="Design">Design</option>
-                    <option value="Fashion">Fashion</option>
-                    <option value="Film and Video">Film and Video</option>
-                    <option value="Food">Food</option>
-                    <option value="Games">Games</option>
-                    <option value="Journalism">Journalism</option>
-                    <option value="Music">Music</option>
-                    <option value="Photography">Photography</option>
-                    <option value="Publishing">Publishing</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Theater">Theater</option>
-                  </select>
-                </div>
-              </fieldset>
-            </form>
-            <div class="row"><input class="rounded col-sm-12" id="days" class="rounded" placeholder="Duration">
-            </div>
-            <div class="row"><br><input class="rounded col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
-            </div>
-            <div class="row pull-right"><br>
-              <button class="btn btn-info" onclick="show_results();">find out!</button>
-            </div>
-            <br>
-          </div>
-          <div class="col-sm-9 pull-right">
-            <div class="text-center">
-              <canvas id="canvas" width="auto" height="10"></canvas>
-              <div id="textDiv" class=""></div>
-            </div><br>
-            <div id="chance-panel" style="display:none;">
-              <div class="row panel panel-default col-sm-11 col-sm-push-1">
-                <div class="">
-                  <h4 class="text-left">Suggestions</h4>
-                  <div id="suggestions"></div><br>
-                </div>
-              </div>
+        <div class="row"><br><input class="rounded col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
+        </div>
+        <div class="row pull-right"><br>
+          <button class="btn btn-info" onclick="show_results();">find out!</button>
+        </div>
+        <br>
+      </div>
+      <div class="col-sm-9 pull-right">
+        <div class="text-center">
+          <canvas id="canvas" width="auto" height="10"></canvas>
+          <div id="textDiv" class=""></div>
+        </div><br>
+        <div id="chance-panel" style="display:none;">
+          <div class="row panel panel-default col-sm-11 col-sm-push-1">
+            <div class="">
+              <h4 class="text-left">Suggestions</h4>
+              <div id="suggestions"></div><br>
             </div>
           </div>
         </div>
@@ -152,5 +159,28 @@
   </div>
 </div>
 </div>
+</section>
+<div class="footer">
+  <div class="container">
+    <div class="footer__stripe"></div>
+    <div class="row">
+      <div class="col-sm-4 text-left">
+        <p>Copyright © 2014 Spokepoint. All rights reserved</p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <a target="_blank" class="btn btn--unfilled btn-info" href="mailto:info@spokepoint.com"> <i class="fa fa-envelope"></i> Send email</a>
+        <a target="_blank" class="btn btn--unfilled btn-info" href="https://twitter.com/spokepoint"> <i class="fa fa-twitter"></i> Follow on Twitter </a>
+      </div>
+      <div class="col-sm-4">
+        <ul class="footer__menu">
+          <li><a href="http://www.spokepoint.com">About</a></li>
+          <li><a href="http://www.spokepoint.com/faq.html">FAQ</a></li>
+          <li><a href="http://www.spokepoint.com/terms-conditions.html">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

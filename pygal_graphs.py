@@ -12,7 +12,7 @@ from pygal.style import Style
 custom_style = Style(
   background='transparent',
   plot_background='transparent',
-  foreground='#111111',
+  foreground='#666666',
   foreground_light='#000000',
   foreground_dark='#111111',
   opacity='.9',
