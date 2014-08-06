@@ -2590,8 +2590,6 @@ h1,
 .h1,
 h2,
 .h2 {
-  margin-top: 22.5px;
-  margin-bottom: 45px;
 }
 h1 small,
 .h1 small,
@@ -7876,7 +7874,6 @@ body {
 }
 @media (min-width: 992px) {
   .main-section__title {
-    text-align: center;
   }
 }
 .main-section--stripe {
