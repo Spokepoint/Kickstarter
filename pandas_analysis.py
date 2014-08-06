@@ -19,7 +19,7 @@ custom_style = Style(
   opacity='.9',
   opacity_hover='.6',
   transition='400ms ease-in',
-  colors=('#444444', '#2ba2ac', '#E95355', '#E87653', '#E89B53'))
+  colors=('#444444', '#4c1066', '#E95355', '#E87653', '#E89B53'))
 
 column_list = ["id","url",'name','backers','parentCat','category','duration', 'date_end','goal','raised','lat','lon','about','faqs','comments','finished','date_scanned', 'success']
 cols_to_graph = ['url', 'success', 'duration', 'goal']

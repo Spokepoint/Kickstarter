@@ -18,7 +18,7 @@ custom_style = Style(
   opacity='.9',
   opacity_hover='.6',
   transition='400ms ease-in',
-  colors=('#2ba2ac', '#444444', '#E95355', '#E87653', '#E89B53'))
+  colors=('#4c1066', '#444444', '#E95355', '#E87653', '#E89B53'))
 
 column_list = ["id","url",'name','backers','parentCat','category','duration', 'date_end','goal','raised','lat','lon','about','faqs','comments','finished','date_scanned', 'success']
 cols_to_keep = ['success', 'duration', 'goal']
@@ -50,7 +50,7 @@ def get_average_goal(df, category):
   average_goals.append(goal/i)
   success_goals.append(suc_goal/s)
   fail_goals.append(f_goal/f)
-  #create_pie_chart((s/i), category)
+  create_pie_chart((s/i), category)
 
 def length_success_rate(df):
   last_dur = 0
