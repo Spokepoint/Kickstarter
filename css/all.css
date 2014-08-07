@@ -2901,6 +2901,9 @@ address {
   padding-left: 15px;
   padding-right: 15px;
 }
+.chances {
+  padding-bottom: 100px;
+}
 @media (min-width: 768px) {
   .container {
     width: 750px;

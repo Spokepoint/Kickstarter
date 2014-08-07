@@ -54,10 +54,9 @@ function ChangePieChart() {
 }
 
 function suggest(category, duration, goal, avg_goal, avg_length, short_goal) {
+    var d1 = document.getElementById('chance-panel');
     if (duration < 10) {
-        if (goal > short_goal) {
-            return "WARNING: this estimate is extrapolated, for under 10 days the highest goal of a success project was " + short_goal + ". We suggest picking a more realistic duration/goal combination!";
-        }
+        d1.insertAdjacentHTML('beforeend', '<span class="well"><p>You have not asked anything of the reader. Add in an "ask" to keep the conversation going.</p><div class="close"></div></span>');
     }
     if (goal > avg_goal) {
         return "The average goal for this category is " + avg_goal + "! keep that in mind.";
@@ -126,7 +125,7 @@ function show_results() {
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         div.textContent = "input a number of days (1-60) and an amount ($1-100,000)";
-        ctx.fillStyle = "#0fbdcc";
+        ctx.fillStyle = "#4c1066";
         probability = success_percent(duration, goal, category);
         percent = probability * 100
         if (duration != 0 && goal != 0 && percent != 0) {
