@@ -34,7 +34,7 @@
       </div>
     </div>
   </section>
-  <section class="main-section main-section--stripe">
+  <section class="main-section">
     <div class="testimonials npb container">
 
       <h2>Knowing your Category</h2>
@@ -86,7 +86,7 @@
   </div>
 </section>
 <div class="row">
-  <section class="main-section main-section--stripe">
+  <section class="main-section">
     <div class="testimonials npb container">
       <h3>Finding the Right Length</h3>
       <div class="col-sm-4">
@@ -97,57 +97,59 @@
     </div><br>
   </div>
 </section>
-<section class="container chances">
-  <div class="col-sm-10 col-sm-push-1 text-center" id="chances">
-    <h3 class="">So, What Are my Chances?</h3>
-    <h6>See how your potential campaign stacks up against past kickstarter projects.</h6>
-    <hr>
-    <h5 class="text-left"><small>Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal. You can see what your chances of success would be based on the historical models we found. The above information can help you find realistic goals to input</small></h5>
-    <hr>
-    <div class="col-sm-3">
-      <form class="form-horizontal">
-        <fieldset>          
-          <div class="row">
-            <select class="form-control" id="category" name="categories">
-              <option value="Category">All Categories</option>
-              <option value="Art">Art</option>
-              <option value="Comics">Comics</option>
-              <option value="Crafts">Crafts</option>
-              <option value="Dance">Dance</option>
-              <option value="Design">Design</option>
-              <option value="Fashion">Fashion</option>
-              <option value="Film and Video">Film and Video</option>
-              <option value="Food">Food</option>
-              <option value="Games">Games</option>
-              <option value="Journalism">Journalism</option>
-              <option value="Music">Music</option>
-              <option value="Photography">Photography</option>
-              <option value="Publishing">Publishing</option>
-              <option value="Technology">Technology</option>
-              <option value="Theater">Theater</option>
-            </select>
-          </div>
-        </fieldset>
-      </form>
-      <div class="row"><input class="form-control col-sm-12" id="days" class="rounded" placeholder="Duration">
+<section class="chances container">
+  <div class="alert alert-info main-chance container" style="padding-left:5px; padding-right:5px">
+    <div class="col-sm-10 col-sm-push-1 text-center" id="chances">
+      <h3 class="">So, What Are my Chances?</h3>
+      <h6>See how your potential campaign stacks up against past kickstarter projects.</h6>
+      <hr>
+      <h5 class="text-left"><small>Using <a>logistic regression</a> we analyzed the probability of a successful campaign based on duration and goal. You can see what your chances of success would be based on the historical models we found. The above information can help you find realistic goals to input</small></h5>
+      <hr>
+      <div class="col-sm-3">
+        <form class="form-horizontal">
+          <fieldset>          
+            <div class="row">
+              <select class="form-control" id="category" name="categories">
+                <option value="Category">All Categories</option>
+                <option value="Art">Art</option>
+                <option value="Comics">Comics</option>
+                <option value="Crafts">Crafts</option>
+                <option value="Dance">Dance</option>
+                <option value="Design">Design</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Film and Video">Film and Video</option>
+                <option value="Food">Food</option>
+                <option value="Games">Games</option>
+                <option value="Journalism">Journalism</option>
+                <option value="Music">Music</option>
+                <option value="Photography">Photography</option>
+                <option value="Publishing">Publishing</option>
+                <option value="Technology">Technology</option>
+                <option value="Theater">Theater</option>
+              </select>
+            </div>
+          </fieldset>
+        </form>
+        <div class="row"><input class="form-control col-sm-12" id="days" class="rounded" placeholder="Duration">
+        </div>
+        <div class="row"><br><input class="form-control col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
+        </div>
+        <div class="row pull-right"><br>
+          <button class="btn btn-info" onclick="show_results();">find out!</button>
+        </div>
+        <br>
       </div>
-      <div class="row"><br><input class="form-control col-sm-12" id="amount" min="1" max="100000" placeholder="Goal">
-      </div>
-      <div class="row pull-right"><br>
-        <button class="btn btn-info" onclick="show_results();">find out!</button>
-      </div>
-      <br>
-    </div>
-    <div class="col-sm-9 pull-right">
-      <div class="text-center">
-        <canvas id="canvas" width="auto" height="10" style="border: 3px solid #999999; border-radius:15px"></canvas>
-        <div id="textDiv" class=""></div>
-      </div><br>
-      <div id="chance-panel" style="display:none;">
-        <span class="well">
-          <p>Your pitch is on the short side. (68 words)</p>
-          <div class="close"></div>
-        </span>
+      <div class="col-sm-9 pull-right">
+        <div class="text-center">
+          <canvas id="canvas" width="500px" height="10" style="border: 3px solid #999999; border-radius:15px"></canvas>
+          <div id="textDiv" class=""></div>
+        </div><br>
+        <div id="chance-panel" style="display:none;">
+          <span class="well">
+            <p>Your pitch is on the short side. (68 words)</p>
+            <div class="close"></div>
+          </span>
+        </div>
       </div>
     </div>
   </div>

@@ -66,49 +66,64 @@ function suggest(category, duration, goal, avg_goal, avg_length, short_goal) {
 
 
 function form_suggestions(category, duration, goal) {
-    var s = document.getElementById("suggestions")
+    var d1 = document.getElementById('chance-panel');
+    d1.innerHTML = "";
     switch (category) {
         case 'Art':
-            s.textContent = suggest(category, duration, goal, 10000, 30, 12000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10000, 30, 12000);
             break;
         case 'Comics':
-            s.textContent = suggest(category, duration, goal, 1000, 30, 2000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 1000, 30, 2000);
             break;
         case 'Dance':
-            s.textContent = suggest(category, duration, goal, 1000, 30, 8000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 1000, 30, 8000);
             break;
         case 'Design':
-            s.textContent = suggest(category, duration, goal, 10, 30, 5000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10, 30, 5000);
             break;
         case 'Fashion':
-            s.textContent = suggest(category, duration, goal, 10000, 30, 10000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10000, 30, 10000);
             break;
         case 'Film and Video':
-            s.textContent = suggest(category, duration, goal, 100, 30, 50000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 100, 30, 50000);
             break;
         case 'Food':
-            s.textContent = suggest(category, duration, goal, 10000, 30, 10000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10000, 30, 10000);
             break;
         case 'Games':
-            s.textContent = suggest(category, duration, goal, 1000, 30, 125000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 1000, 30, 125000);
             break;
         case 'Journalism':
-            s.textContent = suggest(category, duration, goal, 1000, 30, 3500);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 1000, 30, 3500);
             break;
         case 'Music':
-            s.textContent = suggest(category, duration, goal, 10, 30, 37500);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10, 30, 37500);
             break;
         case 'Photography':
-            s.textContent = suggest(category, duration, goal, 10, 30, 7500);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10, 30, 7500);
             break;
         case 'Publishing':
-            s.textContent = suggest(category, duration, goal, 10000, 30, 13500);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 10000, 30, 13500);
             break;
         case 'Technology':
-            s.textContent = suggest(category, duration, goal, 100, 30, 5000);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 100, 30, 5000);
             break;
         case 'Theater':
-            s.textContent = suggest(category, duration, goal, 100, 30, 3500);
+            d1.insertAdjacentHTML('beforeend', '<span class="well"><p></p></span>');
+            suggest(category, duration, goal, 100, 30, 3500);
             break;
     }
 }
